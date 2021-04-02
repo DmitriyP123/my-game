@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 function Navbar() {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const Authorized = useSelector((state) => state)
 
   const logOutHandler = () => {
-    
+    window.localStorage.removeItem('token')
+    dispatch({type:'LOGOUT_USER'})
+    window.localStorage.removeItem('currentState')
+    history.push("/")
   }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,15 +25,8 @@ function Navbar() {
             </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link
-                  to="/info"
-                  className="nav-link"
-                  style={{ color: "#ffc107" }}
-                >
-                  Info
-                </Link>
               </li>
-               <li className="nav-item">
+              {!Authorized.logged &&<li className="nav-item">
                 <Link
                   to="/login"
                   className="nav-link"
@@ -31,17 +34,17 @@ function Navbar() {
                 >
                   Login
                 </Link>
-              </li>
-             <li className="nav-item">
+              </li>}
+              {!Authorized.logged && <li className="nav-item">
                 <Link
                   to="/registration"
                   className="nav-link"
                   style={{ color: "#ffc107" }}
                 >
                   Registration
-                </Link>
-              </li>
-              <li className="nav-item">
+                </Link> 
+              </li>}
+              {Authorized.logged &&<li className="nav-item">
                 <Link
                   to="/"
                   className="nav-link"
@@ -50,7 +53,16 @@ function Navbar() {
                 >
                   LogOut
                 </Link>
-              </li>
+              </li>}
+              {Authorized.logged &&<li className="nav-item">
+                <Link
+                  to="/profile"
+                  className="nav-link"
+                  style={{ color: "#ffc107" }}
+                >
+                  Профиль
+                </Link>
+              </li>}
             </ul>
           </div>
         </div>
