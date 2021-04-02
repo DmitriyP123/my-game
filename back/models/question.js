@@ -124,6 +124,21 @@ console.log(5)
   mongoose.connection.close()
 }
 
-seeds()
+// seeds()
+
+async function getArrQuest() {
+  const questionsTheme1 = await Question.find({theme: 'Арчаков'})
+  const questionsTheme2 = await Question.find({theme: 'Java Script'})
+  const questionsTheme3 = await Question.find({theme: 'История IT'})
+  
+  mongoose.connection.close()
+  
+  console.log(questionsTheme1);
+  console.log(questionsTheme2);
+  console.log(questionsTheme3);
+
+}
+
+getArrQuest()
 
 module.exports = Question
