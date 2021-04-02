@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const usersRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
+const QuestionRouter = require("./routes/questions");
 
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/questions", QuestionRouter);
 
 module.exports = app;

@@ -1,12 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
-function Main(props) {
-  const store = window.localStorage.getItem('currentState')
-  const Authorized = useSelector((state) => state)
 
+function Main(props) {
   return (
     <div>
-    <div>3125456543213456432345</div>
+      ГЛАВНАЯ СТРАНИЦА
     </div>
   );
 }
