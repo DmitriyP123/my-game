@@ -1,0 +1,17 @@
+/* .table-mygame {
+  padding: 1rem !important
+} */
+.table>:not(caption)>*>* {
+  padding: 50px;
+}
+
+.tab-cost {
+  /* position: relative; */
+  text-align: center;
+  border: 10px solid
+}
+
+.tab-cost:hover {
+  /* z-index: 4; */
+  background-color: tomato;
+}
